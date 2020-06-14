@@ -1,7 +1,9 @@
-import NavLinksView from '../js/views/NavLinksView.js'
-import AdminView from '../js/views/AdminView.js'
-import RegisterView from '../js/views/RegisterView.js'
-import EditProfileView from '../js/views/EditProfileView.js'
+import NavLinksView from './views/NavLinksView.js'
+import AdminView from './views/AdminView.js'
+import RegisterView from './views/RegisterView.js'
+import EditProfileView from './views/EditProfileView.js'
+import AddDoctorView from '../js/views/AddDoctorView.js'
+import SearchDoctorView from '../js/views/SearchDoctorView.js'
 
 class App {
     constructor() {
@@ -31,7 +33,13 @@ class App {
             case 'ratings.html':
                 new EditProfileView()
                 new NavLinksView()
-                break;   
+                break;
+            case 'addDoctor.html':
+                new AddDoctorView()
+                break;
+            case 'searchdoctor.html':
+                new SearchDoctorView()
+                break;
             default:
                 break;
         }
