@@ -261,6 +261,28 @@ body {
     color: #f8ce0b;
   }
 
+  /* ################ Doctor Profile ################ */
+
+  .doctor_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    margin-top: 50px;
+  }
+
+  .title{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 25px;
+  }
+
+  .p1{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
 /* ################ FOOTER ################ */
 
 .customFooter {
