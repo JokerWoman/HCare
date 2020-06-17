@@ -8,15 +8,17 @@ function render(data) {
 
 $(document).ready(function() {
 
-    var coment = [{
-        "name": "username",
-        "date": "15 Jun, 2020",
-        "body": "this is a comment"
-    }];
+    var comment = [];
 
-    for (var i = 0; i < coment.length; i++) {
-        render(coment[i]);
+    if(!localStorage.comentData){
+        localStorage.comentData = [];
+    }else{
+        comment = JSON.parse(localStorage.comentData);
+    }
 
+    
+    for (var i = 0; i < comment.length; i++) {
+        render(comment[i]);
     }
 
     $('#addComent').click(function() {
@@ -26,7 +28,8 @@ $(document).ready(function() {
             "body": $('#bodyText').val()
         };
 
-        coment.push(addObj);
+        comment.push(addObj);
+        localStorage.comentData = JSON.stringify(comment);
         render(addObj);
         $('#name').val('');
         $('#date').val('dd/mm/yyyy');
