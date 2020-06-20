@@ -1,11 +1,13 @@
 import AdminController from '../controllers/AdminController.js'
-import UserController from '../controllers/UserController.js';
+import UserController from '../controllers/UserController.js'
+import DoctorController from '../controllers/DoctorController.js'
 
 export default class AdminView {
     constructor() {
 
         this.adminController = new AdminController()
         this.userController = new UserController()
+        this.doctorController = new DoctorController()
 
         /* Admin Content Display */
         this.contentDisplay = document.querySelector("#contentDisplay")
