@@ -62,9 +62,9 @@
 
                         <label>Speciality</label>
                         <select id="filterDoctorSpeciality" class="form-control">
-                            <option value="Dermatologists">Dermatologist</option>
+                            <option value="Dermatologist">Dermatologist</option>
                             <option value="Pediatrician"> Pediatrician </option>
-                            <option value="Psychiatrists">Psychiatrist</option>
+                            <option value="Psychiatrist">Psychiatrist</option>
                             <option value="Other" ></option>Other</option>
                         </select>
 
@@ -89,8 +89,20 @@
                     <div>
                         <button id="btnSearch" class="btn btn-primary btn-block"> Search </button>
                     </div>
+                    <br>
+
+                    <div id="divResults"></div>
+                    <br>
 
                     <div id="map"></div>
+                    <br>
+
+                    <div class="form-group br-radius-zero">
+                        <div id="doctorMessage"></div>
+
+                    </div>
+
+
 
 
 
@@ -133,7 +145,7 @@
     <script type="module" src="js/App.js"></script>
     <script>
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWy5Qgj-4xuhGykrcEgamtibDsyQrw1kI&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWy5Qgj-4xuhGykrcEgamtibDsyQrw1kI&callback=initMap"></script>
     </script>
     <script>
         var slider = document.getElementById("myRange");

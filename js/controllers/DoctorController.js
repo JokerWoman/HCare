@@ -47,8 +47,8 @@ export default class DoctorController {
                 filterDoctorName = true
             }
 
-            if ((doctor.specialty.includes(filterSpecialty) && filterSpecialty != '') || filterSpecialty === '') {
-                filterDoctorSpecialty = false
+            if ((doctor.specialty === filterSpecialty && filterSpecialty != '') || filterSpecialty === '') {
+                filterDoctorSpecialty = true
             }
 
             if (filterDoctorName && filterDoctorSpecialty) {

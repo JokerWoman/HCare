@@ -108,4 +108,26 @@ export default class LoginModel {
     _Persist() {
         localStorage.setItem('users', JSON.stringify(this.users))
     }
+
+    createAppointment(userEmail, doctorFirstName, doctorLastName, doctorSpecialty, date, time) {
+        const appointment = {
+            userEmail: userEmail,
+            doctorFirstName: doctorFirstName,
+            doctorLastName: doctorLastName,
+            doctorSpecialty: doctorSpecialty,
+            date: date,
+            time: time
+
+        }
+        this.appointments.push(appointment);
+        this._persistAppointment();
+
+    }
+    _persistAppointment() {
+        localStorage.setItem('appointments', JSON.stringify(this.appointments))
+    }
+
+    GetAllAppointmentsFromLocalStorage() {
+        return JSON.parse(localStorage.getItem('appointments')) || []
+    }
 }

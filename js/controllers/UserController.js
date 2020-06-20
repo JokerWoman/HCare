@@ -73,4 +73,12 @@ export default class UserController {
             throw Error(`The email "${email}" specified is already in use by somebody else.`)
         }
     }
+
+    createAppointments(userEmail, doctorFirstName, doctorLastName, doctorSpecialty, date, time) {
+        this.userModel.createAppointment(userEmail, doctorFirstName, doctorLastName, doctorSpecialty, date, time)
+    }
+
+    getAllAppointments() {
+        return this.userModel.GetAllAppointmentsFromLocalStorage()
+    }
 }

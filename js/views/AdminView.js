@@ -27,6 +27,13 @@ export default class AdminView {
         this.adminFilterUsers = document.querySelector("#adminFilterUsers")
         this.BindFilterUsers()
         this.UpdateUsersVisualization("")
+
+
+        /*Manage Doctors */
+        this.btnAddDoctor = document.querySelector("#btnAddDoctor")
+        this.adminDoctorsVisualization = document.querySelector('#adminDoctorsVisualization')
+        this.UpdateDoctorsVisualization()
+
     }
 
 
@@ -153,6 +160,50 @@ export default class AdminView {
 
     AdminLoginMessageHandler(message, type) {
         this.adminMessage.innerHTML = `<div class="alert alert-${type}" role="alert">${message}</div>`
+    }
+
+    UpdateDoctorsVisualization() {
+
+        if (this.adminController.IsAdminLogged() === true) {
+
+            let doctors = this.doctorController.getAllDoctors()
+
+
+            this.adminDoctorsVisualization.innerHTML = ""
+
+            for (let i = 0; i < doctors.length; i++) {
+                this.adminDoctorsVisualization.innerHTML += `
+                        <div class="main-section text-center">
+                        <div class="user-detail">
+                            <div class="col-lg-12 col-sm-12 col-12">
+                                <img src="${doctors[i].photo}" class="rounded-circle img-thumbnail">
+                                <h5>${doctors[i].firstName} ${doctors[i].lastName}</h5>
+                                <h7>${doctors[i].specialty} </h7>
+                                <p ><i class="fa fa-envelope" aria-hidden="true"></i> ${doctors[i].email}</p>
+                                <a href="#" name="${doctors[i].email}" class="btn btn-danger btn-sm remove">Delete</a>
+                            </div>
+                        </div>
+                    </div> `
+            }
+        }
+        this.bindDeleteDoctorButton()
+
+    }
+
+
+    bindDeleteDoctorButton() {
+        for (const deleteButton of document.getElementsByClassName("remove")) {
+            deleteButton.addEventListener('click', event => {
+                event.preventDefault()
+
+                this.deleteDoctor(event.target.name)
+                event.target.parentElement.parentElement.parentElement.remove();
+            })
+        }
+    }
+
+    deleteDoctor(email) {
+        this.doctorController.removeDoctor(email)
     }
 
 }
