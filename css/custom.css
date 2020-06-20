@@ -4,6 +4,16 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+/* ################ FOOTER AND MAIN PAGE ################ */
+#page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  #content-wrap {
+    padding-bottom: 250px;    /* custom Footer height */
+  }
+
 /* ################ MAIN PAGE ################ */
 
 .iconsMainPage{
@@ -344,6 +354,10 @@ body {
     font-size: 15px;
     line-height: 24px;
     color: #737373;
+    height: 250px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .customFooter hr {

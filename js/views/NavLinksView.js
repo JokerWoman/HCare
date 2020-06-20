@@ -12,12 +12,15 @@ export default class NavLinksView {
         /* Nav Bar Navigation Links */
         this.loginStatusNavLink = document.querySelector('#loginStatusNavLink')
         this.registerNavLink = document.querySelector('#registerNavLink')
-        this.editProfileNavLink = document.querySelector('#editProfileNavLink')
+        this.userProfileNavLink = document.querySelector('#userProfileNavLink')
+        this.searchDoctoNavLink = document.querySelector('#searchDoctoNavLink')
 
         this.loginTitle = "Login"
         this.logoutTitle = "Logout"
-        this.editProfileTitle = "Edit Profile"
+        this.editProfileTitle = "Profile"
         this.registerTitle = "Register"
+        this.searchDoctorTitle = "Search Doctor"
+
         this.empty = ""
         this.UpdateNavLinksInformation()
         this.BindLoginLogoutLinks()
@@ -71,23 +74,29 @@ export default class NavLinksView {
         if (this.userController.IsUserLogged()) {
 
             this.loginStatusNavLink.innerHTML = this.logoutTitle
-            this.editProfileNavLink.classList.add("visible")
+            this.userProfileNavLink.classList.add("visible")
 
             this.registerNavLink.innerHTML = this.empty
             this.registerNavLink.classList.add("invisible")
 
-            this.editProfileNavLink.innerHTML = this.editProfileTitle
-            this.editProfileNavLink.classList.add("visible")
+            this.userProfileNavLink.innerHTML = this.editProfileTitle
+            this.userProfileNavLink.classList.add("visible")
+
+            this.searchDoctoNavLink.innerHTML = this.searchDoctorTitle
+            this.searchDoctoNavLink.classList.add("visible")
         } else {
 
             this.loginStatusNavLink.innerHTML = this.loginTitle
-            this.editProfileNavLink.classList.add("visible")
+            this.userProfileNavLink.classList.add("visible")
 
             this.registerNavLink.innerHTML = this.registerTitle
             this.registerNavLink.classList.add("visible")
 
-            this.editProfileNavLink.innerHTML = this.empty
-            this.editProfileNavLink.classList.add("invisible")
+            this.userProfileNavLink.innerHTML = this.empty
+            this.userProfileNavLink.classList.add("invisible")
+
+            this.searchDoctoNavLink.innerHTML = this.empty
+            this.searchDoctoNavLink.classList.add("invisible")
         }
     }
 

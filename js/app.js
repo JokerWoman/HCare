@@ -2,6 +2,7 @@ import NavLinksView from './views/NavLinksView.js'
 import AdminView from './views/AdminView.js'
 import RegisterView from './views/RegisterView.js'
 import EditProfileView from './views/EditProfileView.js'
+import UserProfileView from './views/UserProfileView.js'
 import AddDoctorView from '../js/views/AddDoctorView.js'
 import SearchDoctorView from '../js/views/SearchDoctorView.js'
 import AppointmentsView from '../js/views/AppointmentsView.js'
@@ -20,6 +21,10 @@ class App {
         switch (htmlFile) {
             case '':
             case 'index.html':
+                new NavLinksView()
+                break;
+            case 'userProfile.html':
+                new UserProfileView()
                 new NavLinksView()
                 break;
             case 'editProfile.html':
@@ -41,9 +46,11 @@ class App {
                 new AddDoctorView()
                 break;
             case 'searchdoctor.html':
+                new NavLinksView()
                 new SearchDoctorView()
                 break;
             case 'appointments.html':
+                new NavLinksView()
                 new AppointmentsView()
                 break;
             default:
@@ -54,7 +61,7 @@ class App {
         const doctors = [{
                 firstName: 'Claire',
                 lastName: 'Cardwell',
-                photo: '.../img/doctors/3.png',
+                photo: 'https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg',
                 email: 'claire@gmail.com',
                 dateOfBirth: '27/07/1990',
                 gender: 'Female',
@@ -65,7 +72,7 @@ class App {
             {
                 firstName: 'Harry',
                 lastName: 'Thompson',
-                photo: '.../img/doctors/1.png',
+                photo: 'https://hcplive.s3.amazonaws.com/v1_media/_image/happydoctor.jpg',
                 email: 'harry@gmail.com',
                 dateOfBirth: '15/11/1970',
                 gender: 'Male',
