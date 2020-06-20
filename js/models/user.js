@@ -12,5 +12,6 @@ export default class User {
         this.blockState = blockState
         this.userLevel = 1
         this.userLevelExperience = 0
+        this.userGaveFeedbackAlready = false
     }
 }

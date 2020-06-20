@@ -49,6 +49,18 @@ export default class UserController {
         return this.userModel.IsUserLogged()
     }
 
+    FeedbackFromUserExists()
+    {
+        let user = this.userModel.GetUserLoggedData()
+        return user.userGaveFeedbackAlready
+    }
+
+    GiveUserFeedback()
+    {
+        let user = this.userModel.GetUserLoggedData()
+        this.userModel.GiveUserFeedback(user.email)
+    }
+
     Login(email, password) {
         if (this.userModel.GetAllUsers().some(user => user.email === email)) {
             if (this.userModel.GetAllUsers().some(user => user.email === email && user.password === password)) {

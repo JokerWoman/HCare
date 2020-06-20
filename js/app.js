@@ -6,11 +6,11 @@ import UserProfileView from './views/UserProfileView.js'
 import AddDoctorView from '../js/views/AddDoctorView.js'
 import SearchDoctorView from '../js/views/SearchDoctorView.js'
 import AppointmentsView from '../js/views/AppointmentsView.js'
+import FeedbackView from '../js/views/FeedbackView.js'
 
 class App {
     constructor() {
         this._InstantiateView()
-
         this._importDoctorsData()
     }
 
@@ -22,10 +22,12 @@ class App {
             case '':
             case 'index.html':
                 new NavLinksView()
+                new FeedbackView()
                 break;
             case 'userProfile.html':
                 new UserProfileView()
                 new NavLinksView()
+                new FeedbackView()
                 break;
             case 'editProfile.html':
                 new EditProfileView()

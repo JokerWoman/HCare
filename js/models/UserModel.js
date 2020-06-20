@@ -20,6 +20,26 @@ export default class LoginModel {
         return sessionStorage.getItem("loggedUser") !== null ? true : false
     }
 
+    GiveUserFeedback(email)
+    {
+        this.UpdateAllUsersFromLocalStorage()
+        for (var i = 0; i < this.users.length; i++) {
+            if (this.users[i].email === email) {
+                this.users[i].userGaveFeedbackAlready = true
+
+                this.users[i].userLevelExperience = parseInt(this.users[i].userLevelExperience) + 20
+                if(parseInt(this.users[i].userLevelExperience) >= 100)
+                {
+                    this.users[i].userLevelExperience = 0
+                    this.users[i].userLevel = parseInt(this.users[i].userLevel) + 1
+                }
+
+                this._Persist()
+                break
+            }
+        }
+    }
+
     IncreaseUserLevelExperience(email)
     {
         this.UpdateAllUsersFromLocalStorage()
