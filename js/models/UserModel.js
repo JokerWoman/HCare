@@ -20,6 +20,27 @@ export default class LoginModel {
         return sessionStorage.getItem("loggedUser") !== null ? true : false
     }
 
+    IncreaseUserLevelExperience(email)
+    {
+        this.UpdateAllUsersFromLocalStorage()
+        for (var i = 0; i < this.users.length; i++) {
+            if (this.users[i].email === email) {
+                if(parseInt(this.users[i].userLevel) < 10)
+                {
+                    this.users[i].userLevelExperience = parseInt(this.users[i].userLevelExperience) + 10
+
+                    if(parseInt(this.users[i].userLevelExperience) >= 100)
+                    {
+                        this.users[i].userLevelExperience = 0
+                        this.users[i].userLevel = parseInt(this.users[i].userLevel) + 1
+                    }
+                    this._Persist()
+                    break
+                }
+            }
+        }
+    }
+
     BlockUnlockUser(email) {
         let blockState = false
         this.UpdateAllUsersFromLocalStorage()
@@ -56,6 +77,7 @@ export default class LoginModel {
                 this.users[i].address = address
                 this.users[i].phone = phone
                 this._Persist()
+                break
             }
         }
     }

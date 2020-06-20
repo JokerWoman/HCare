@@ -56,6 +56,7 @@ export default class UserController {
                     throw Error(`The user is blocked by the admin.`)
                 } else {
                     this.userModel.Login(email)
+                    this.userModel.IncreaseUserLevelExperience(email)
                     window.location.replace("index.html")
                 }
             } else {

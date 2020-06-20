@@ -12,7 +12,9 @@ export default class UserProfileView {
         this.userProfileAddress = document.querySelector("#userProfileAddress")
         this.userProfilePhone = document.querySelector("#userProfilePhone")
         this.userProfileAvatarPhoto = document.querySelector("#userProfileAvatarPhoto")
-
+        this.userLevel = document.querySelector("#userLevel")
+        this.userLevelExperiencePercentage = document.querySelector("#userLevelExperiencePercentage")
+        this.userLevelExperienceValue = document.querySelector("#userLevelExperienceValue")
         this.FillUserProfileDataInForm()
     }
 
@@ -26,6 +28,9 @@ export default class UserProfileView {
             this.userProfileAddress.value = user.address
             this.userProfilePhone.value = user.phone
             this.userProfileAvatarPhoto.src = user.avatarSourceImage
+            this.userLevel.innerHTML = user.userLevel.toString() + "/10"
+            this.userLevelExperiencePercentage.innerHTML = `<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: ${user.userLevelExperience}%" aria-valuenow="${user.userLevelExperience}" aria-valuemin="0" aria-valuemax="100"></div>`
+            this.userLevelExperienceValue.innerHTML = user.userLevelExperience.toString() + "%"
         }
     }
 

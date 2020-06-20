@@ -10,5 +10,7 @@ export default class User {
         this.password = password
         this.avatarSourceImage = avatarSourceImage
         this.blockState = blockState
+        this.userLevel = 1
+        this.userLevelExperience = 0
     }
 }
