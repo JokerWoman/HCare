@@ -75,8 +75,7 @@
 
                                 <div class="col form-group br-radius-zero">
                                     <label>Doctor's Name</label>
-                                    <input type="text" id="filterDoctorName" class="form-control" placeholder=" "
-                                        required>
+                                    <input type="text" id="filterDoctorName" class="form-control" placeholder=" " required>
                                 </div>
 
 
@@ -95,14 +94,26 @@
                             </div>
                             <br>
 
-                            <div id="divResults"></div>
-                            <br>
+
 
                             <div id="map"></div>
                             <br>
 
                             <div class="form-group br-radius-zero">
                                 <div id="doctorMessage"></div>
+
+                            </div>
+                            <div class="custom-select" style="width:200px;">
+                                <select id="doctorOptions">
+                               
+                                </select>
+
+                                <br>
+                                <br>
+
+                                <div>
+                                    <button id="btnCallDoctor" class="btn btn-primary btn-block">Call Doctor</button>
+                                </div>
 
                             </div>
 
@@ -150,15 +161,14 @@
         <script type="module" src="js/App.js"></script>
         <script>
         </script>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWy5Qgj-4xuhGykrcEgamtibDsyQrw1kI&callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWy5Qgj-4xuhGykrcEgamtibDsyQrw1kI&callback=initMap"></script>
         </script>
         <script>
             var slider = document.getElementById("myRange");
             var output = document.getElementById("demo");
             output.innerHTML = slider.value;
 
-            slider.oninput = function () {
+            slider.oninput = function() {
                 output.innerHTML = this.value;
             }
         </script>

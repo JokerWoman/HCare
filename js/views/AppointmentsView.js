@@ -8,7 +8,7 @@ export default class AppointmentsView {
 
         this.appointmentsVisualizations = document.querySelector('#appointmentsVisualization')
         this.updateAppointmentsVisualization()
-        console.log(this.userController.getAllAppointments())
+
     }
 
     updateAppointmentsVisualization() {

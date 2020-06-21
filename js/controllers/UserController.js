@@ -49,14 +49,12 @@ export default class UserController {
         return this.userModel.IsUserLogged()
     }
 
-    FeedbackFromUserExists()
-    {
+    FeedbackFromUserExists() {
         let user = this.userModel.GetUserLoggedData()
         return user.userGaveFeedbackAlready
     }
 
-    GiveUserFeedback()
-    {
+    GiveUserFeedback() {
         let user = this.userModel.GetUserLoggedData()
         this.userModel.GiveUserFeedback(user.email)
     }
@@ -87,9 +85,10 @@ export default class UserController {
         }
     }
 
-    createAppointments(userEmail, doctorFirstName, doctorLastName, doctorSpecialty, date, time) {
-        this.userModel.createAppointment(userEmail, doctorFirstName, doctorLastName, doctorSpecialty, date, time)
+    createAppointments(userEmail, doctorEmail, date, time) {
+        this.userModel.createAppointment(userEmail, doctorEmail, date, time)
     }
+
 
     getAllAppointments() {
         return this.userModel.GetAllAppointmentsFromLocalStorage()

@@ -11,14 +11,61 @@ export default class SearchDoctorView {
         this.filterDoctorSpecialty = document.getElementById('filterDoctorSpeciality')
         this.filterDoctorName = document.getElementById('filterDoctorName')
         this.btnSearch = document.querySelector('#btnSearch')
+        this.doctorOptions = document.getElementById('doctorOptions')
+        this.btnCallDoctor = document.querySelector('#btnCallDoctor')
+        this.doctorMessage = document.querySelector("#doctorMessage")
 
 
         this.initMap()
+        this.fillDoctorsOptions()
+        this.bindAppointmentBtn()
 
 
 
 
     }
+
+    bindAppointmentBtn() {
+        this.btnCallDoctor.addEventListener('click', () => {
+            this.createAppointment();
+        })
+    }
+
+    createAppointment() {
+        let user = this.userController.GetUserLoggedEmail();
+
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        var e = document.getElementById("doctorOptions");
+        var doctorEmail = e.options[e.selectedIndex].value;
+
+        console.log(doctorEmail);
+
+        try {
+            this.userController.createAppointments(user, doctorEmail, date, time);
+            this.callDoctorMessageHandler("Doctor has been called", 'success')
+
+        } catch (exception) {
+            this.callDoctorMessageHandler(exception, 'danger')
+
+
+
+        }
+    }
+
+    fillDoctorsOptions() {
+        let doctors = this.doctorController.getAllDoctors();
+        for (let i = 0; i < doctors.length; i++) {
+            var option = document.createElement('option')
+            option.innerHTML = doctors[i].firstName + " " + doctors[i].lastName;
+            option.value = doctors[i].email;
+            this.doctorOptions.appendChild(option)
+        }
+
+    }
+
 
 
 
@@ -30,33 +77,7 @@ export default class SearchDoctorView {
 
 
 
-    bindCallDoctorButton() {
-        let user = this.userController.GetUserLoggedEmail();
 
-        var today = new Date();
-        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
-
-        for (const callDoctorButton of document.getElementsByClassName("callDoctorAction")) {
-            callDoctorButton.addEventListener('click', event => {
-                event.preventDefault();
-                try {
-                    this.userController.createAppointments(user, doctor[i].firstName, doctor[i].lastName, doctor[i].specialty, date, time);
-                    this.callDoctorMessageHandler("Doctor has been called", 'success')
-
-                } catch (exception) {
-                    this.callDoctorMessageHandler(exception, 'danger')
-                }
-
-
-
-
-
-
-            })
-        }
-    }
 
 
 
@@ -86,16 +107,13 @@ export default class SearchDoctorView {
                                     <img src="${doctors[i].photo}" class="rounded-circle img-thumbnail">
                                     <h5>${doctors[i].firstName} ${doctors[i].lastName}</h5>
                                     <h7>${doctors[i].specialty}</h7>
-                                    <br>
-                                    <button id="${doctors[i].email}" class="btn btn-primary callDoctorAction">Call Doctor</button>
-                                    
                                 </div>
                             </div>
                         </div> `,
 
                         });
 
-                        this.bindCallDoctorButton();
+
 
 
                         var doctorWindow = new google.maps.InfoWindow({
@@ -162,16 +180,8 @@ export default class SearchDoctorView {
         const geocoder = new google.maps.Geocoder();
 
         this.btnSearch.addEventListener('click', () => {
-                this.geocodeAddress(geocoder, map)
-            })
-            /*
-                    markers.addEventListener('click'), () => {
-                            this.calcRoute(directionsService, directionsRenderer)
-                        }
-                        
-                                this.addMarker({ lat: 41.3599, lng: -8.7458 });
-                        */
-            // Add a select listener to generate and render the route
+            this.geocodeAddress(geocoder, map)
+        })
 
 
 
@@ -220,37 +230,6 @@ export default class SearchDoctorView {
     }
 
 
-    calcRoute(directionsService, directionsRenderer) {
-
-
-
-        // Creation of a DirectionsRequest object 
-        const request = {
-            origin: pos,
-            destination: markers.position,
-            travelMode: google.maps.travelMode['DRIVING']
-        };
-
-        // call DirectionsService.route() to initiate a request to the Directions service
-        // passing it a DirectionsRequest object literal containing the input terms and a callback method 
-        // to execute upon receipt of the response.
-        directionsService.route(request,
-            (result, status) => {
-                if (status == 'OK') {
-                    directionsRenderer.setDirections(result);
-                    const directionsData = result.routes[0].legs[0]; // Get data about the mapped route
-                    if (directionsData) {
-                        document.querySelector("#divResults").innerHTML = `
-                  Driving distance is ${directionsData.distance.text} (${directionsData.duration.text})
-                `
-                    } else {
-                        document.querySelector("#divResults").innerHTML = 'Directions request failed'
-                    }
-                } else {
-                    document.querySelector("#divResults").innerHTML = status
-                }
-            });
-    }
 
     handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);

@@ -20,16 +20,14 @@ export default class LoginModel {
         return sessionStorage.getItem("loggedUser") !== null ? true : false
     }
 
-    GiveUserFeedback(email)
-    {
+    GiveUserFeedback(email) {
         this.UpdateAllUsersFromLocalStorage()
         for (var i = 0; i < this.users.length; i++) {
             if (this.users[i].email === email) {
                 this.users[i].userGaveFeedbackAlready = true
 
                 this.users[i].userLevelExperience = parseInt(this.users[i].userLevelExperience) + 20
-                if(parseInt(this.users[i].userLevelExperience) >= 100)
-                {
+                if (parseInt(this.users[i].userLevelExperience) >= 100) {
                     this.users[i].userLevelExperience = 0
                     this.users[i].userLevel = parseInt(this.users[i].userLevel) + 1
                 }
@@ -40,17 +38,14 @@ export default class LoginModel {
         }
     }
 
-    IncreaseUserLevelExperience(email)
-    {
+    IncreaseUserLevelExperience(email) {
         this.UpdateAllUsersFromLocalStorage()
         for (var i = 0; i < this.users.length; i++) {
             if (this.users[i].email === email) {
-                if(parseInt(this.users[i].userLevel) < 10)
-                {
+                if (parseInt(this.users[i].userLevel) < 10) {
                     this.users[i].userLevelExperience = parseInt(this.users[i].userLevelExperience) + 10
 
-                    if(parseInt(this.users[i].userLevelExperience) >= 100)
-                    {
+                    if (parseInt(this.users[i].userLevelExperience) >= 100) {
                         this.users[i].userLevelExperience = 0
                         this.users[i].userLevel = parseInt(this.users[i].userLevel) + 1
                     }
@@ -151,12 +146,10 @@ export default class LoginModel {
         localStorage.setItem('users', JSON.stringify(this.users))
     }
 
-    createAppointment(userEmail, doctorFirstName, doctorLastName, doctorSpecialty, date, time) {
+    createAppointment(userEmail, doctorEmail, date, time) {
         const appointment = {
             userEmail: userEmail,
-            doctorFirstName: doctorFirstName,
-            doctorLastName: doctorLastName,
-            doctorSpecialty: doctorSpecialty,
+            doctorEmail: doctorEmail,
             date: date,
             time: time
 
