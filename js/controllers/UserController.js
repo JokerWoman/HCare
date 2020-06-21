@@ -85,8 +85,8 @@ export default class UserController {
         }
     }
 
-    createAppointments(userEmail, doctorEmail, date, time) {
-        this.userModel.createAppointment(userEmail, doctorEmail, date, time)
+    createAppointments(user, doctorEmail, date, time) {
+        this.userModel.createAppointment(user, doctorEmail, date, time)
     }
 
 

@@ -3,6 +3,7 @@ import User from '../models/User.js'
 export default class LoginModel {
     constructor() {
         this.users = this.GetAllUsersFromLocalStorage()
+        this.appointments = this.GetAllAppointmentsFromLocalStorage()
     }
 
     Logout() {
@@ -146,9 +147,9 @@ export default class LoginModel {
         localStorage.setItem('users', JSON.stringify(this.users))
     }
 
-    createAppointment(userEmail, doctorEmail, date, time) {
+    createAppointment(user, doctorEmail, date, time) {
         const appointment = {
-            userEmail: userEmail,
+            userEmail: user.email,
             doctorEmail: doctorEmail,
             date: date,
             time: time
