@@ -168,7 +168,7 @@ export default class SearchDoctorView {
 
         let infoWindow = new google.maps.InfoWindow;
 
-        var contentString = '<h5>Sua posição</h5>';
+        var contentString = '<h5>Your Position</h5>';
 
 
 
