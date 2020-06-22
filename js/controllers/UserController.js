@@ -93,4 +93,28 @@ export default class UserController {
     getAllAppointments() {
         return this.userModel.GetAllAppointmentsFromLocalStorage()
     }
+
+    filterAppointments(userEmail) {
+        const appointments = this.getAllAppointments()
+
+        let filteredAppointments = []
+
+        for (const appointment of appointments) {
+            let filterUserEmail = false
+
+
+            if ((appointment.user.includes(userEmail))) {
+                filterUserEmail = true
+            }
+
+
+
+            if (filterUserEmail) {
+                filteredAppointments.push(appointment)
+            }
+
+
+        }
+        return filteredAppointments
+    }
 }

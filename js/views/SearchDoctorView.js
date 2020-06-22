@@ -150,9 +150,6 @@ export default class SearchDoctorView {
 
     initMap = function() {
 
-        const directionsService = new google.maps.DirectionsService();
-        const directionsRenderer = new google.maps.DirectionsRenderer();
-
 
 
         let map = new google.maps.Map(document.getElementById('map'), {
@@ -189,7 +186,7 @@ export default class SearchDoctorView {
 
 
 
-        // Try HTML5 geolocation
+
         if (navigator.geolocation) {
 
             // returns the current position of the user 

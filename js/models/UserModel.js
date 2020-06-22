@@ -149,7 +149,7 @@ export default class LoginModel {
 
     createAppointment(user, doctorEmail, date, time) {
         const appointment = {
-            userEmail: user.email,
+            user: user,
             doctorEmail: doctorEmail,
             date: date,
             time: time
