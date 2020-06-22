@@ -1,10 +1,12 @@
 import UserController from '../controllers/UserController.js'
+import DoctorController from '../controllers/DoctorController.js'
 import User from '../models/User.js'
 
 export default class AppointmentsView {
     constructor() {
 
         this.userController = new UserController();
+        this.doctorController = new DoctorController();
 
         this.appointmentsVisualizations = document.querySelector('#appointmentsVisualization')
         this.updateAppointmentsVisualization()

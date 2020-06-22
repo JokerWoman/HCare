@@ -161,7 +161,6 @@ export default class SearchDoctorView {
 
         });
 
-        directionsRenderer.setMap(map);
 
         let infoWindow = new google.maps.InfoWindow;
 
